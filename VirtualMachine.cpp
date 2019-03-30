@@ -19,7 +19,7 @@ int CVirtualMachine::Exec()
 {
     for( int i = 0; i < WordSize; ++i ) {   // Check header
         if( bin[i] != HeaderChar ) {
-            throw std::exception( "file is not binary file!" );
+            throw std::runtime_error( "file is not binary file!" );
         }
     }
 

@@ -1,5 +1,6 @@
 #include "Assembler.h"
 
+#include <algorithm>
 #include "Constants.h"
 
 CAssembler::CAssembler() :
@@ -27,7 +28,7 @@ void CAssembler::Compile( const std::string& codeFileName, const std::string& ou
         } else if( section == "def" ) {
             loadFunctions();
         } else {
-            throw std::exception( "unknown section detected" );
+            throw std::runtime_error( "unknown section detected" );
         }
     }
 
@@ -187,6 +188,6 @@ int& CAssembler::getWord( int ptr )
 void CAssembler::checkSyntax( const std::string& test, const std::string& original )
 {
     if( test != original ) {
-        throw std::exception( "syntax error" );
+        throw std::runtime_error( "syntax error" );
     }
 }
